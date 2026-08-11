@@ -227,7 +227,8 @@ def main():
                 if not html:
                     continue
 
-                subject = f"{cat['subject_prefix']}: {title}"
+                # Используем СТРОГО тему категории без добавления заголовков
+                subject = cat['subject_prefix']
                 send_email(subject, html, attachments)
                 print(f"Успешно отправлено письмо: {title}")
 
@@ -242,6 +243,3 @@ def main():
     if new_ids_found:
         save_sent_ids(sent_ids)
         print("Список отправленных ID обновлен.")
-
-if __name__ == "__main__":
-    main()
